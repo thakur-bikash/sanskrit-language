@@ -1,0 +1,74 @@
+% ============================================================
+%  chapters/ch01_balakanda.tex
+%
+%  LAYER STRUCTURE (mirrors template four-commentary layout,
+%  reduced to one commentary layer per shloka for this work)
+%  ─────────────────────────────────────────────────────────
+%  \roottext{}              → shloka verse  (violet Devanagari)
+%  \begin{commentary}{…}   → commentary heading (centred)
+%  \end{commentary}
+%  body text                → English / Hindi commentary
+%
+%  Add further \roottext + commentary blocks for new shlokas.
+% ============================================================
+
+% ── Activate page numbering ───────────────────────────────────
+\fancyhead[LE]{\thepage}
+\setcounter{page}{1}
+\renewcommand{\headrulewidth}{1pt}
+
+% ── Running headers ──────────────────────────────────────────
+\fancyhead[CE]{\en\itshape Vālmīki Rāmāyaṇa~|}   % left page centre  ← change per chapter
+\fancyhead[CO]{\en\itshape Bālakāṇḍa~|}           % right page centre ← change per chapter
+\fancyhead[RO,LE]{\thepage}
+
+% Fix for ch01_balakanda.tex
+%
+% The chapter-opening block had  \en नमः  which passes Devanagari text
+% to Linux Libertine O (a Latin-only font), producing nullfont warnings.
+% \en should only wrap Latin/IAST text.
+%
+% ── BEFORE (broken) ──────────────────────────────────────────────────────────
+%
+%   ~॥~\om\ \en नमः~॥\\
+%
+% ── AFTER (fixed) ────────────────────────────────────────────────────────────
+%
+%   \h{~॥~}\om\ \h{नमः~॥}\\
+%
+% \h{} is defined in preamble.tex as  \newcommand{\h}[1]{{\la #1}}
+% so it selects Shobhika for its argument and returns to the default font.
+% The standalone ॥ before \om was also unguarded; wrapping it in \h{} fixes
+% that too.
+%
+% ── Full corrected chapter-opening block ─────────────────────────────────────
+
+\begin{center}
+{\Huge $_{*}$}~{\la श्रीः}~{\Huge $_{*}$}\\
+\h{~॥~}\om\ \h{नमः~॥}\\
+\vspace{2mm}
+{\en\LARGE Bālakāṇḍa}\\
+\rule{.1\linewidth}{1pt}\\
+\vspace{1mm}
+{\en\large The Book of Beginnings}
+\end{center}
+
+% ═══════════════════════════════════════════════════════════
+%  SHLOKA 1
+% ═══════════════════════════════════════════════════════════
+
+\sarga{Sarga 1 · The First Shloka}
+
+% ── Root text (shloka) ───────────────────────────────────────
+\roottext{%
+\om\ तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।\\
+नारदं परिपप्रच्छ वाल्मीकिर्मुनिपुङ्गवम् ॥
+}
+
+% ── Commentary ───────────────────────────────────────────────
+\begin{commentary}{\en Commentary}
+\end{commentary}
+
+
+
+\newpage

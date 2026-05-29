@@ -1,0 +1,105 @@
+% ============================================================
+%  preamble.tex
+%  All packages, font definitions, and custom commands.
+%  Edit fonts / colors here; chapter files stay untouched.
+% ============================================================
+
+% ── Page geometry ────────────────────────────────────────────
+\usepackage[text={4.65in,7.45in}, centering, includefoot]{geometry}
+
+% ── Color ────────────────────────────────────────────────────
+\usepackage[table, x11names]{xcolor}
+
+% ── Fonts (XeLaTeX) ──────────────────────────────────────────
+\usepackage{fontspec, realscripts}
+\usepackage{polyglossia}
+  \setdefaultlanguage{english}
+  \setotherlanguage{sanskrit}
+
+% Main Latin font (body text — English is the default language)
+\setmainfont{Linux Libertine O}
+
+% Named font families — use these in chapter files
+\newfontfamily\la  [Script=Devanagari, Scale=.9]{Shobhika}   % Devanagari body
+\newfontfamily\regular{Linux Libertine O}
+\newfontfamily\en  [Language=English, Script=Latin]{Linux Libertine O}
+
+% --- some other fonts 
+% \setmainfont[Script=Devanagari]{Murty Sanskrit}
+% \setmainfont[Script=Devanagari]{Siddhanta}
+% \setmainfont[Script=Devanagari]{Chandas}
+% \setmainfont[Script=Devanagari, Scale=1.1]{Annapurna SIL}
+% \setmainfont[Script=Devanagari]{Sanskrit 2003}
+% \setmainfont[Script=Devanagari]{Adishila Samskrta}
+
+
+% Commentary colour fonts — change colors here to restyle all commentaries at once
+\newfontfamily\vp  [Script=Devanagari, Scale=1,   Color=purple]{Shobhika-Bold}  % root text / primary
+\newfontfamily\vps [Script=Devanagari, Scale=.8,  Color=purple]{Shobhika-Bold}  % small purple
+\newfontfamily\vpc [Script=Devanagari, Scale=1,   Color=violet]{Shobhika-Bold}  % secondary
+\newfontfamily\qt  [Script=Devanagari, Scale=.8,  Color=violet]{Shobhika-Bold}  % small violet
+
+% Searchable PDF
+\XeTeXgenerateactualtext=1
+
+% ── Devanagari page numerals ─────────────────────────────────
+\newcommand{\devanagarinumeral}[1]{%
+  \devanagaridigits{\number\csname c@#1\endcsname}}
+
+% ── General packages ─────────────────────────────────────────
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{vwcol}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[linewidth=1pt]{mdframed}
+\usepackage{setspace}
+\usepackage{xspace}
+\usepackage{array}
+\usepackage{emptypage}
+\usepackage{hyperref}
+  \hypersetup{colorlinks,
+    citecolor=black, filecolor=black,
+    linkcolor=blue,  urlcolor=black}
+
+% ── Header / footer defaults ─────────────────────────────────
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}  % chapters turn this on as needed
+
+% ── Commentary environment shorthand ─────────────────────────
+% Usage:  \begin{commentary}{Commentary Name}  … text …  \end{commentary}
+\newenvironment{commentary}[1]{%
+  \begin{center}#1\end{center}%
+}{}
+
+% ── Convenience: a titled quote block (root-text verses / shlokas) ─────
+% Usage:  \roottext{verse text}
+\newcommand{\roottext}[1]{%
+  \begin{quote}\vpc #1\end{quote}}
+
+% ── Inline Hindi / Devanagari shorthand ──────────────────────
+\newcommand{\h}[1]{{\la #1}}
+
+% ── Om symbol ────────────────────────────────────────────────
+\newcommand{\om}{{\la ॐ}}
+\newcommand{\rt}[1]{\roottext{#1}} % Shortens \roottext to \rt
+\newcommand{\omdev}{~॥~\om~॥}       % Auto-inserts the Om signs and dandas
+
+% ── Sarga sub-heading (within a kanda chapter) ───────────────
+\newcommand{\sarga}[1]{%
+  \vspace{6mm}%
+  \begin{center}%
+    {\normalsize\textit{#1}}\\%
+    \rule{.25\linewidth}{.4pt}%
+  \end{center}%
+  \vspace{3mm}%
+}

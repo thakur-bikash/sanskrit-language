@@ -1,0 +1,32 @@
+% ============================================================
+%  MAIN FILE — include new chapters at the bottom
+%  Run with XeLaTeX (required for Devanagari fonts)
+% ============================================================
+\documentclass[10pt, openany]{book}
+
+\input{preamble}   % all packages, fonts, commands
+
+\begin{document}
+\doublespacing
+\cfoot{}
+
+% ── Front matter ─────────────────────────────────────────────
+\input{frontmatter/titlepage_english}
+\input{frontmatter/titlepage_sanskrit}
+\input{frontmatter/ashirvad}          % invocation + blessing verses
+\input{frontmatter/bhumika}           % preface (भूमिका)
+
+% ── Main text ────────────────────────────────────────────────
+% Page numbering switches to Arabic here (see chapter files)
+\input{chapters/ch01_balakanda}
+
+% To add a new chapter, just append:
+%   \input{chapters/ch02_ayodhyakanda}
+%   \input{chapters/ch03_aranyakanda}
+%   …
+
+% ── Back matter ──────────────────────────────────────────────
+\input{backmatter/shuddhi_patram}     % errata table
+\input{backmatter/pustak_soochi}      % book list / colophon
+
+\end{document}
